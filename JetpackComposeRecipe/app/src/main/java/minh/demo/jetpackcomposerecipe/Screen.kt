@@ -2,7 +2,7 @@ package minh.demo.jetpackcomposerecipe
 
 sealed class Screen(val route: String){
     object HomeScreen : Screen("home_screen")
-    object RegisterScreen : Screen("register_screen")
+    object DetailScreen : Screen("detail_screen")
     object LoginScreen : Screen("login_screen")
     object SplashScreen : Screen("splash_screen")
 

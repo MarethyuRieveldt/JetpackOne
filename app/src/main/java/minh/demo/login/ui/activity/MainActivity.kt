@@ -1,4 +1,4 @@
-    package minh.demo.jetpackcomposerecipe
+package minh.demo.login.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,19 +10,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import minh.demo.jetpackcomposerecipe.ui.theme.JetpackComposeRecipeTheme
+import minh.demo.login.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            JetpackComposeRecipeTheme {
+            MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Navigation()
+                    Greeting("Android")
                 }
             }
         }
@@ -40,7 +40,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    JetpackComposeRecipeTheme {
+    MyApplicationTheme {
         Greeting("Android")
     }
 }
