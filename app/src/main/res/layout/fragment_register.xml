@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.navigation.Navigation" />
+
+        <import type="com.example.letmecook.R" />
+
+        <variable
+            name="viewModel"
+            type="minh.demo.login.ui.viewmodel.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/clean_background"
+        tools:context="minh.demo.login.ui.fragment.RegisterFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/field_v_margin"
+            android:text="@string/sign_up"
+            android:textColor="@color/dark"
+            android:textSize="@dimen/big_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/name_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_layout"
+            style="@style/OutlinedBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginBottom="@dimen/field_v_margin"
+            android:hint="@string/name"
+            app:layout_constraintBottom_toTopOf="@+id/email_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                style="@style/TextInputStyle"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout"
+            style="@style/OutlinedBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:hint="@string/email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                style="@style/TextInputStyle"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_layout"
+            style="@style/OutlinedBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/field_v_margin"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@+id/email_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                style="@style/TextInputStyle"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/field_v_margin"
+            android:backgroundTint="@color/white"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/dark"
+            app:layout_constraintTop_toBottomOf="@+id/password_layout"
+            app:rippleColor="@color/medium" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
