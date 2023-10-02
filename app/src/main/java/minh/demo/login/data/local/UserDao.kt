@@ -16,7 +16,7 @@ interface UserDao {
     @Insert(User::class, onConflict = OnConflictStrategy.ABORT)
     suspend fun insertUser(user: User)
 
-    @Query("SELECT * FROM user WHERE username = :username AND password = :password")
+    @Query("SELECT * FROM user WHERE username = :username")
     suspend fun getUsersByName(username: String): List<User>
 
     @Query("SELECT EXISTS (SELECT username FROM user WHERE username = :username)")

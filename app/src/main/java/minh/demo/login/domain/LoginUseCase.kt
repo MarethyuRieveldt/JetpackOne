@@ -12,7 +12,7 @@ class LoginUseCase @Inject constructor(
         return when {
             username.isEmpty() -> UserState.Error(msg = "Username can't be empty")
             password.isEmpty() -> UserState.Error(msg = "Password can't be empty")
-            else -> userRepository.getUserByName(username)
+            else -> userRepository.getUserByName(username, password)
         }
     }
 }
