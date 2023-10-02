@@ -2,6 +2,7 @@ package minh.demo.jetpackcomposerecipe
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,7 +21,7 @@ fun Navigation() {
         }
 
         composable(
-            route = Screen.HomeScreen.route + "/{name}",
+            route = Screen.HomeScreen.route,
             arguments = listOf(
                 navArgument("name") {
                     type = NavType.StringType
@@ -28,9 +29,14 @@ fun Navigation() {
                     nullable = true
                 }
             )
-        ) {entry ->
-            HomeScreen(name = entry.arguments?.getString("name") )
-
+        ) { entry ->
+            HomeScreen(
+                name = entry.arguments?.getString("name"),
+                navController = navController
+            )
+        }
+        composable(route = Screen.DetailScreen.route){
+            DetailScreen(navController = navController)
         }
     }
 }

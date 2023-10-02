@@ -27,9 +27,13 @@ import androidx.navigation.NavController
 import minh.demo.jetpackcomposerecipe.ui.theme.JetpackComposeRecipeTheme
 
 @ExperimentalMaterial3Api
+//a composable to be called
 @Composable
-fun LoginScreen(navController: NavController) {
-    val inputvalue = remember { mutableStateOf(TextFieldValue()) }
+fun LoginScreen(navController: NavController) {//navController is the inputs
+
+    val inputvaluename = remember { mutableStateOf(TextFieldValue()) }
+    val inputvaluepass = remember { mutableStateOf(TextFieldValue()) }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -41,8 +45,8 @@ fun LoginScreen(navController: NavController) {
         Text(text = stringResource(id = R.string.login), modifier = Modifier.padding(16.dp))
 
         TextField(
-            value = inputvalue.value,
-            onValueChange = { inputvalue.value = it },
+            value = inputvaluename.value,
+            onValueChange = { inputvaluename.value = it },
             placeholder = { Text(text = "Username") },
             modifier = Modifier
                 .padding(all = 16.dp)
@@ -56,8 +60,8 @@ fun LoginScreen(navController: NavController) {
         )
 
         TextField(
-            value = inputvalue.value,
-            onValueChange = { inputvalue.value = it },
+            value = inputvaluepass.value,
+            onValueChange = { inputvaluepass.value = it },
             placeholder = { Text(text = "Password") },
             modifier = Modifier
                 .padding(all = 16.dp)
@@ -70,18 +74,18 @@ fun LoginScreen(navController: NavController) {
             singleLine = true,
         )
 
-        val context  = LocalContext.current
+        val context = LocalContext.current
         Button(onClick = {
-            Toast.makeText(context,"login Success", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "login Success", Toast.LENGTH_LONG).show()
             navController.navigate(Screen.HomeScreen.route)
         }) {
             Text(text = "Login")
         }
 
-        Text(text = "Don't have an account",modifier = Modifier.padding(16.dp))
+        Text(text = "Don't have an account", modifier = Modifier.padding(16.dp))
 
         Button(onClick = {
-            Toast.makeText(context,"Move to sign up", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Move to sign up", Toast.LENGTH_LONG).show()
         }) {
             Text(text = "Sign up")
         }
