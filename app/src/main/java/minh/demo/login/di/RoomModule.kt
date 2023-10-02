@@ -2,17 +2,19 @@ package minh.demo.login.di
 
 import android.app.Application
 import androidx.room.Room
+import dagger.Module
 import javax.inject.Singleton
 import dagger.Provides
 import minh.demo.login.data.local.UserDao
 import minh.demo.login.data.local.UserDatabase
 import minh.demo.login.data.repo.UserRepository
-import minh.demo.login.data.repo.UserdbRepository
+import minh.demo.login.data.repo.UserDbRepository
 import minh.demo.login.domain.GetAllUseCase
-import minh.demo.login.domain.GetAllUsersUseCase
 import minh.demo.login.domain.LoginUseCase
 import minh.demo.login.domain.RegisterUseCase
+import minh.demo.login.ui.UserViewModelFactory
 
+@Module
 class RoomModule(private val application: Application) {
 
     @Singleton
@@ -38,7 +40,7 @@ class RoomModule(private val application: Application) {
     @Singleton
     @Provides
     fun provideUserRepository(userDao: UserDao): UserRepository {
-        return UserdbRepository(userDao)
+        return UserDbRepository(userDao)
     }
 
     @Singleton

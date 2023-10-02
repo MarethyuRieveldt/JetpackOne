@@ -1,6 +1,7 @@
 package minh.demo.login.di
 
 import dagger.Component
+import minh.demo.login.data.provider.UserProvider
 import minh.demo.login.ui.activity.MainActivity
 import javax.inject.Singleton
 
@@ -9,5 +10,6 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 
     fun inject(mainActivity: MainActivity)
+    fun inject(userProvider: UserProvider)
 
 }

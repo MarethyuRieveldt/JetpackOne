@@ -7,5 +7,5 @@ import minh.demo.login.data.model.User
 interface UserRepository {
     fun getAllUsers() : Flow<List<User>>
     suspend fun insertUser(user: User): UserState<User>
-    suspend fun getUserByName(username: String): UserState<User>
+    suspend fun getUserByName(username: String, password: String): UserState<User>
 }

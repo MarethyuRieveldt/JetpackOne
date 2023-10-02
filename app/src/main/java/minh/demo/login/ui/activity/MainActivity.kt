@@ -1,46 +1,29 @@
 package minh.demo.login.ui.activity
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import minh.demo.login.ui.theme.MyApplicationTheme
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MyApplicationTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+import androidx.lifecycle.ViewModelProvider
+import minh.demo.login.R
+import minh.demo.login.databinding.ActivityMainBinding
+import minh.demo.login.di.UserManagerApp
+import minh.demo.login.ui.UserViewModelFactory
+import minh.demo.login.ui.base.BaseActivity
+import minh.demo.login.ui.viewmodel.UserViewModel
+import javax.inject.Inject
+
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    @Inject
+    lateinit var factory: UserViewModelFactory
+    private lateinit var userViewModel: UserViewModel
+    override fun getLayoutId(): Int = R.layout.activity_main
+
+    override fun bindView() {
+        (applicationContext as UserManagerApp).components.inject(this)
+        userViewModel = ViewModelProvider(this, factory)[UserViewModel::class.java]
+
+        binding.run {
+            lifecycleOwner = this@MainActivity
+            viewModel = userViewModel
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
     }
 }
